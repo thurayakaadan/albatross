@@ -3,48 +3,48 @@
 bangladesh:
   year_range: [2014, 2017]
   resolutions: ["hourly"]
+  lat_lon_range: [[20.63102, 28.500214], [85.809204, 93.72342]]
 canada:
   year_range: [2007, 2014]
   resolutions: ["hourly", "5min"]
-canada_bc:
-  year_range: [2007, 2014]
-  resolutions: ["hourly"]
+  lat_lon_range: [[40.0522, 68.10168], [-144.3318, -40.799896]]
 central_asia:
   year_range: [2015, 2015]
   resolutions: ["hourly"]
+  lat_lon_range: [[35.184048, 55.425625], [46.519226, 87.2984]]
 conus:
   year_range: [2007, 2014] 
   resolutions: ["hourly", "5min"]
+  lat_lon_range: [[23.833504, 49.3556], [-129.22923, -65.7146]]
 hawaii:
   year_range: [2000, 2019]
   resolutions: ["hourly", "5min"]
   base: "Hawaii"
+  lat_lon_range: [[15.564247, 26.22171], [-164.45187, -151.27744]]
 india:
   year_range: [2014, 2014]
   resolutions: ["hourly"]
+  lat_lon_range: [[4.2723618, 31.015549], [63.305073, 92.87215]]
 mexico:
   year_range: [2007, 2014] 
   resolutions: ["hourly", "5min"]
+  lat_lon_range: [[8.510117, 32.714092], [-122.173706, -78.47278]]
 mid_atlantic:
   year_range: [2000, 2020] 
   resolutions: ["hourly", "5min"]
   base: "Mid_Atlantic"
+  lat_lon_range: [[37.272533, 42.21066], [-76.427795, -64.79974]]
 nw_pacific:
   year_range: [2000, 2019] 
   resolutions: ["hourly", "5min"]
-  base: "NW_pacific"
+  base: "NW_Pacific"
+  lat_lon_range: [[41.212753, 49.57924], [-130.83197, -121.67192]]
 offshore_ca:
   year_range: [2000, 2019] 
   resolutions: ["hourly", "5min"]
   base: "Offshore_CA"
+  lat_lon_range: [[31.931606, 42.642445], [-129.0906, -115.805786]]
 philippines:
   year_range: [2017, 2017] 
   resolutions: ["hourly"]
-vietnam:
-  year_range: [2016, 2018] 
-  resolutions: ["hourly"]
-
-
-
-
-
+  lat_lon_range: [[-0.2983322, 21.924805], [112.176575, 130.24242]]
