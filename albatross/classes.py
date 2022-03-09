@@ -118,7 +118,7 @@ class RequestParams:
     def get_fields(cls):
         """
         Returns a list of fields that can be used as parameters.
-        
+
         Returns:
           list: A list of valid parameters:
 
@@ -147,10 +147,10 @@ class RequestParams:
 
         return height + other
 
-    def register(self, field, height=None):
+    def register(self, field, heights=None):
         """
         Registers a new request field.
-        
+
         Args:
           field (str): A field name. Must be a valid field name (see `RequestParams.get_fields`)
           height (int): A height (m). Must fall into the following ranges (inclusive):
@@ -168,13 +168,16 @@ class RequestParams:
         assert field in self._HEIGHT_FIELDS or field in self._OTHER_FIELDS, msg
 
         if field in self._HEIGHT_FIELDS:
-            assert height is not None, '"height" is required for this field.'
-            assert isinstance(height, int), '"height" must be an integer.'
+            assert heights is not None, '"heights" required for this field.'
+            assert isinstance(heights, list), '"heights" must be a list.'
+            msg = '"heights" elements must be integers.'
+            assert all([isinstance(h, int) for h in heights]), msg
             height_range = self._HEIGHT_FIELDS[field]['height_range']
-            msg = f'"height" must be in {height_range}.'
-            assert height in height_range, msg
 
-            field_name = self._HEIGHT_FIELDS[field]['field']
-            self.params.append(f'{field_name}_{height}m')
+            for height in heights:
+                msg = f'"height" must be in {height_range}.'
+                assert height in height_range, msg
+                field_name = self._HEIGHT_FIELDS[field]['field']
+                self.params.append(f'{field_name}_{height}m')
         else:
             self.params.append(self._OTHER_FIELDS[field])

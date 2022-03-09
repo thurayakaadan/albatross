@@ -16,6 +16,8 @@ def boxplot(data, fields=None, labels=None, **box_kwargs):
     """
     Draws boxplots of wind speeds.
 
+    .. image:: ../docs/boxplot.jpg
+
     Args:
       data (DataFrame): wind data
       fields (:obj:`list` of :obj:`str`, optional): a list of columns to include from the
@@ -67,6 +69,8 @@ def plot_windrose(data, speed=None, direction=None, **wr_kwargs):
     """
     Generates a windrose plot from the given data.
 
+    .. image:: ../docs/windrose.png
+
     Args:
       data (DataFrame): Wind data
       speed (str, optional): Wind speed column name. If not provided, it will be inferred
@@ -113,6 +117,8 @@ def plot_windrose(data, speed=None, direction=None, **wr_kwargs):
 def pdf(data, speed=None, hist_kwargs=None, plot_kwargs=None):
     """
     Generates a Weibull probability density plot from the given data.
+
+    .. image:: ../docs/pdf.jpg
 
     Args:
       data (DataFrame): Wind data
@@ -211,6 +217,8 @@ def plot_diurnal_stats(data, speed=None):
     """
     Plots basic relevant diurnal wind speed statistics for the given data.
 
+    .. image:: ../docs/diurnal.jpg
+
     Args:
       data (DataFrame): Wind data
       speed (str, optional): Wind speed column name. If not provided, it will be inferred
@@ -231,8 +239,8 @@ def plot_diurnal_stats(data, speed=None):
     for i, label in enumerate(stats_df):
         ax.plot(stats_df[label], label=label, marker=markers[i])
 
-    ax.set_xlabel('Hour')
-    ax.set_ylabel('Wind Speed (m/s)')
+    ax.set_xlabel('Hour', fontsize='large')
+    ax.set_ylabel('Wind Speed (m/s)', fontsize='large')
     ax.set_xticks(np.arange(0, 23, 2))
     ax.legend()
 

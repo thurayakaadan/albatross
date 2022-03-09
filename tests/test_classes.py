@@ -58,19 +58,26 @@ def test_RequestParams_register_invalid_field():
     with pytest.raises(AssertionError) as e:
         rp.register('wind_speed')
 
-    msg = '"height" is required for this field.'
+    msg = '"heights" required for this field.'
+    assert str(e.value) == msg
+
+    # invalid heights
+    with pytest.raises(AssertionError) as e:
+        rp.register('wind_speed', heights='12')
+
+    msg = '"heights" must be a list.'
     assert str(e.value) == msg
 
     # invalid height
     with pytest.raises(AssertionError) as e:
-        rp.register('wind_speed', height='12')
+        rp.register('wind_speed', heights=['12'])
 
-    msg = '"height" must be an integer.'
+    msg = '"heights" elements must be integers.'
     assert str(e.value) == msg
 
     # height out of range
     with pytest.raises(AssertionError) as e:
-        rp.register('wind_speed', height=0)
+        rp.register('wind_speed', heights=[0])
 
     msg = '"height" must be in range(10, 201).'
     assert str(e.value) == msg
@@ -82,12 +89,12 @@ def test_RequestParams_register():
     """Test `register`."""
     rp = RequestParams()
 
-    rp.register('wind_speed', height=10)
+    rp.register('wind_speed', heights=[10, 20, 30])
 
-    assert len(rp.params) == 1
-    assert rp.params[0] == 'windspeed_10m'
+    assert len(rp.params) == 3
+    assert rp.params[:3] == ['windspeed_10m', 'windspeed_20m', 'windspeed_30m']
 
     rp.register('inverse_monin_obukhov_length')
 
-    assert len(rp.params) == 2
-    assert rp.params[1] == 'inversemoninobukhovlength_2m'
+    assert len(rp.params) == 4
+    assert rp.params[3] == 'inversemoninobukhovlength_2m'
